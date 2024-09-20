@@ -1,14 +1,14 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
-import { ServiceFeeService } from './service-fee.service';
+import { Body, Controller, Get, Post, Query } from '@nestjs/common';
 import { ServiceFee } from 'src/entities/service-fee/service-fee.entity';
+import { ServiceFeeService } from './service-fee.service';
 
 @Controller('service-fee')
 export class ServiceFeeController {
   constructor(private readonly serviceFeeService: ServiceFeeService) {}
 
   @Get()
-  findAll() {
-    return this.serviceFeeService.findAll();
+  findAll(@Query('companyId') companyId: string) {
+    return this.serviceFeeService.findAllByCompany(companyId);
   }
 
   @Post()

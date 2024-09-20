@@ -13,6 +13,13 @@ export class ServiceFeeService {
   findAll(): Promise<ServiceFee[]> {
     return this.serviceFeeRepository.find({ relations: ['company'] });
   }
+  findAllByCompany(companyId: string): Promise<ServiceFee[]> {
+    const companyIdAsNumber = Number(companyId);
+    return this.serviceFeeRepository.find({
+      where: { company: { id: companyIdAsNumber } },
+      relations: ['company'],
+    });
+  }
 
   create(serviceFee: ServiceFee): Promise<ServiceFee> {
     return this.serviceFeeRepository.save(serviceFee);

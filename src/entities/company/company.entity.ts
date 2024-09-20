@@ -1,5 +1,12 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
-import { ServiceFee } from '../service-fee/service-fee.entity';  // Import ServiceFee for the relationship
+import {
+    Column,
+    CreateDateColumn,
+    Entity,
+    OneToMany,
+    PrimaryGeneratedColumn,
+    UpdateDateColumn,
+} from 'typeorm';
+import { ServiceFee } from '../service-fee/service-fee.entity'; 
 
 export enum CompanyStatus {
   PENDING = 'pending',
@@ -26,5 +33,11 @@ export class Company {
   lastActivity: Date;
 
   @OneToMany(() => ServiceFee, (serviceFee) => serviceFee.company)
-  serviceFees: ServiceFee[];  // A company can have multiple service fees
+  serviceFees: ServiceFee[]; // A company can have multiple service fees
+
+  @CreateDateColumn({ type: 'timestamp' })
+  createdAt: Date; // Automatically set on insert
+
+  @UpdateDateColumn({ type: 'timestamp' })
+  updatedAt: Date; // Automatically updated on every update
 }

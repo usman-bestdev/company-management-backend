@@ -12,7 +12,6 @@ export enum AssetType {
   BTC = 'BTC',
   GAS = 'GAS',
 }
-
 @Entity()
 export class ServiceFee {
   @PrimaryGeneratedColumn()

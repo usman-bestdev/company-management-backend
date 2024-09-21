@@ -8,10 +8,10 @@ import { ServiceFeeModule } from './service-fee/service-fee.module';
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
-      port: 5432,
-      username: 'company_management_user',  // the new user you created
-      password: '1234567890',
-      database: 'companymanagement',
+      port: 5433,
+      username: 'postgres',  // the new user you created
+      password: 'mysecretpassword',
+      database: 'company-management-db',
       autoLoadEntities: true,
       synchronize: true,
     }),

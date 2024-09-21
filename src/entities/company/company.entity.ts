@@ -29,9 +29,6 @@ export class Company {
   })
   status: CompanyStatus;
 
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
-  lastActivity: Date;
-
   @OneToMany(() => ServiceFee, (serviceFee) => serviceFee.company)
   serviceFees: ServiceFee[]; // A company can have multiple service fees
 

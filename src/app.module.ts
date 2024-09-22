@@ -3,12 +3,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { CompanyModule } from './company/company.module';
 import { ServiceFeeModule } from './service-fee/service-fee.module';
 import { ConfigModule,ConfigService } from '@nestjs/config';
-import { Seeder } from 'typeorm-extension'; // Add this import
-
 @Module({
   imports: [
      // Load environment variables from .env file
-     ConfigModule.forRoot({
+    ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: ".env",
     }),
@@ -28,7 +26,6 @@ import { Seeder } from 'typeorm-extension'; // Add this import
     }),
     CompanyModule,
     ServiceFeeModule,
-
   ],
 })
 export class AppModule {}
